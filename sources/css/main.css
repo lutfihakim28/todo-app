@@ -1,0 +1,430 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+:root {
+  /* primary */
+  --bright-blue: hsl(220, 98%, 61%);
+  --check-background: linear-gradient(-30deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+
+  /* light theme */
+  --very-light-gray: hsl(0, 0%, 98%);
+  --light-grayish-blue-lighter: hsl(233, 11%, 84%);
+  --dark-grayish-blue-lighter: hsl(236, 9%, 61%);
+  
+
+  /* dark theme */
+  --very-dark-blue: hsl(235, 21%, 11%);
+  --light-grayish-blue: hsl(235, 24%, 19%);
+  --light-grayish-blue-hover: hsl(236, 33%, 92%);
+  --dark-grayish-blue: hsl(234, 11%, 52%);
+  --very-dark-grayish-blue: hsl(233, 14%, 35%);
+  --very-dark-grayish-blue-darker: hsl(237, 14%, 26%);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+body {
+  font-size: 18px;
+  width: 100vw;
+  background-color: var(--very-dark-blue);
+  user-select: none;
+  overflow-x: hidden;
+  height: 100vh;
+}
+
+.page-container {
+  position: relative;
+}
+
+html, body, .page-container {
+  min-height: 100%;
+}
+
+footer {
+  position: absolute;
+  bottom: 5px;
+  text-align: center;
+  width: 100%;
+  font-size: 12px;
+  color: var(--very-dark-grayish-blue);
+}
+
+footer a {
+  text-decoration: none;
+  color: var(--light-grayish-blue-hover);
+}
+
+footer a:hover {
+  color: var(--very-dark-grayish-blue-darker);
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 256px;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(../images/bg-desktop-dark.jpg);
+}
+
+.wrapper {
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: 540px;
+}
+
+.card > * {
+  margin-bottom: 20px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5%;
+}
+
+h1 {
+  font-size: 2.3em;
+  letter-spacing: 15px;
+  color: #fefefbff;
+}
+
+.switcher {
+  background: none;
+  width: 26px;
+  height: 26px;
+  border: none;
+  cursor: pointer;
+  background-image: url(../images/icon-sun.svg);
+}
+
+.switcher:focus {
+  outline: none;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.25% 23px;
+  background-color: var(--light-grayish-blue);
+  border-radius: 5px;
+}
+
+.card-content {
+  box-shadow: 0 10px 20px -7px rgba(0, 0, 0, 0.342);
+}
+
+.circle {
+  min-width: 25px;
+  height: 25px;
+  background-image: url(../images/checkbox-background.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+form {
+  width: 100%;
+  height: 3.125%;
+  display: flex;
+  align-items: center;
+  padding-left: 23px;
+}
+
+.input-todo {
+  background: transparent;
+  border: none;
+  width: 100%;
+  height: 100%;
+  caret-color: #5b73b2ff;
+  color: #bfc4daff;
+  padding-top: 2px;
+  font-size: 18px;
+}
+
+.input-todo:focus {
+  outline: none;
+}
+
+.input-todo:focus::placeholder {
+  opacity: 0;
+}
+
+.input-todo::placeholder {
+  font-size: 18px;
+  vertical-align: center;
+  color: var(--dark-grayish-blue);
+}
+
+.card-content {
+  width: 100%;
+  background: var(--light-grayish-blue);
+  border-radius: 5px;
+  position: relative;
+}
+
+ul {
+  list-style: none;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  padding: 2.25% 23px;
+  border-bottom: 1px solid var(--very-dark-grayish-blue-darker);
+  cursor: move;
+}
+
+.round {
+  position: relative;
+  width: auto;
+}
+
+.round label {
+  cursor: pointer;
+  display: block;
+  width: 90%;
+  margin-left: 48px;
+  margin-top: -12px;
+  color: #bfc4daff;
+}
+
+.round label::before {
+  content: "";
+  min-width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  background-image: url(../images/checkbox-background.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.checkbox {
+  visibility: hidden;
+}
+
+.todo-label:hover::before {
+  background-image: url(../images/checkbox-background-hover.svg);
+}
+
+.checkbox:checked + .todo-label::before {
+  background-image: url(../images/checkbox-background-checked.svg);
+}
+
+.checkbox:checked + .todo-label {
+  text-decoration: line-through;
+  color: var(--dark-grayish-blue);
+}
+
+.delete {
+  width: 18px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: .5%;
+  opacity: 0;
+}
+
+.delete:focus {
+  outline: none;
+}
+
+li:hover .delete {
+  opacity: 1;
+}
+
+.empty {
+  color: var(--very-dark-grayish-blue);
+  border-bottom: 1px solid var(--very-dark-grayish-blue-darker);
+  text-align: center;
+  visibility: visible;
+  font-size: 18px;
+  padding: 2.25% 23px;
+  color: var(--dark-grayish-blue);
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.25% 23px;
+  color: var(--very-dark-grayish-blue);
+  font-size: 14px;
+}
+
+.text-only {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--very-dark-grayish-blue);
+  font-size: 14px;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-between;
+  width: 160px;
+}
+
+.filter button:not(.active):hover,
+.clear:hover {
+  color: var(--light-grayish-blue-hover);
+}
+
+.text-only:focus {
+  outline: none;
+}
+
+button.active {
+  color: var(--bright-blue);
+  cursor: auto;
+}
+
+.hint {
+  width: 100%;
+  text-align: center;
+  color: var(--very-dark-grayish-blue);
+  margin: 7% 0;
+  font-size: 14px;
+}
+
+/* light theme */
+body.light {
+  background-color: var(--very-light-gray);
+}
+
+body.light .background {
+  background-image: url(../images/bg-desktop-light.jpg);
+}
+
+body.light .switcher {
+  background-image: url(../images/icon-moon.svg);
+}
+
+body.light .input-container,
+body.light .card-content {
+  background-color: var(--very-light-gray);
+}
+
+body.light .input-todo,
+body.light .round label,
+body.light .empty {
+  color: var(--very-dark-grayish-blue);
+}
+
+body.light .round label::before,
+body.light .circle {
+  background-image: url(../images/checkbox-background-light.svg);
+}
+
+body.light .checkbox:hover + label::before {
+  background-image: url(../images/checkbox-background-hover.svg);
+}
+
+body.light .checkbox:checked + label::before {
+  background-image: url(../images/checkbox-background-checked.svg);
+}
+
+body.light .card-footer .text-only:not(.active):hover {
+  color: var(--very-dark-blue);
+}
+
+body.light .empty {
+  border-bottom: 1px solid var(--light-grayish-blue-lighter);
+}
+
+body.light li {
+  border-bottom: 1px solid var(--light-grayish-blue-lighter);
+}
+
+body.light footer a {
+  color: hsl(280, 87%, 65%);
+}
+
+body.light footer a:hover {
+  color: var(--very-dark-grayish-blue);
+}
+
+body.light li:hover .delete {
+  opacity: 0.5;
+}
+
+@media (max-width: 540px) {
+  body,
+  .input-todo,
+  .input-todo::placeholder,
+  .empty {
+    font-size: 16px;
+  }
+  .card {
+    width: 480px;
+  }
+
+  .card-footer,
+  .text-only,
+  .hint {
+    font-size: 14px;
+  }
+
+  .filter {
+    width: 140px;
+  }
+
+  .round label::before,
+  .circle {
+    min-width: 23px;
+    height: 23px;
+  }
+}
+
+@media (max-width: 480px) {
+  body,
+  .input-todo,
+  .input-todo::placeholder,
+  .empty {
+    font-size: 14px;
+  }
+  .card {
+    width: 360px;
+  }
+
+  .card-footer,
+  .text-only,
+  .hint {
+    font-size: 12px;
+  }
+
+  .filter {
+    width: 120px;
+  }
+
+  .round label::before,
+  .circle {
+    min-width: 21px;
+    height: 21px;
+  }
+}
